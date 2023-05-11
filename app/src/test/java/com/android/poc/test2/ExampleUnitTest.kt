@@ -1,4 +1,4 @@
-package com.android.poc.postest2
+package com.android.poc.test2
 
 import org.junit.Test
 

@@ -1,18 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <Button
+            android:id="@+id/btn_start_bh"
+            android:layout_width="@dimen/dp_100"
+            android:layout_height="@dimen/dp_50"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/dp_40"
+            android:text="开启保活"
+            android:textSize="@dimen/sp_16" />
+
+        <Button
+            android:id="@+id/btn_stop_bh"
+            android:layout_width="@dimen/dp_100"
+            android:layout_height="@dimen/dp_50"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/dp_40"
+            android:text="关闭保活"
+            android:textSize="@dimen/sp_16" />
+
+        <Button
+            android:id="@+id/btn_open_accessibility"
+            android:layout_width="@dimen/dp_170"
+            android:layout_height="@dimen/dp_50"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/dp_40"
+            android:text="打开自动化设置"
+            android:textSize="@dimen/sp_16" />
+
+        <Button
+            android:id="@+id/btn_start_accessibility"
+            android:layout_width="@dimen/dp_170"
+            android:layout_height="@dimen/dp_50"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/dp_40"
+            android:text="开启自动化测试"
+            android:textSize="@dimen/sp_16" />
+
+        <Button
+            android:id="@+id/btn_stop_accessibility"
+            android:layout_width="@dimen/dp_170"
+            android:layout_height="@dimen/dp_50"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/dp_40"
+            android:text="关闭自动化测试"
+            android:textSize="@dimen/sp_16" />
+
+    </LinearLayout>
+
+</androidx.core.widget.NestedScrollView>
