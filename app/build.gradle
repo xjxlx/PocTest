@@ -5,11 +5,11 @@ plugins {
 def config = rootProject.ext.android
 
 android {
-    namespace 'com.android.poc.postest2'
     compileSdkVersion config.compileSdkVersion
+    buildToolsVersion config.buildToolsVersion
 
     defaultConfig {
-        applicationId "com.android.poc.postest2"
+        applicationId "com.android.poc.postest"
         minSdkVersion config.minSdkVersion
         targetSdkVersion config.targetSdkVersion
         versionCode config.versionCode
