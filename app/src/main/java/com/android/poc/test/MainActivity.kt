@@ -9,7 +9,7 @@ import com.android.accessibility.util.AccessibilityUtil
 import com.android.apphelper2.utils.ToastUtil
 import com.android.apphelper2.utils.permission.PermissionMultipleCallBackListener
 import com.android.apphelper2.utils.permission.PermissionUtil
-import com.android.poc.postest2.databinding.ActivityMainBinding
+import com.android.poc.test.databinding.ActivityMainBinding
 
 /**
  *  * 权限指令： adb shell pm grant com.android.poc.test2  android.permission.WRITE_SECURE_SETTINGS
