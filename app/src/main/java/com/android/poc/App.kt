@@ -1,4 +1,4 @@
-package com.android.poc.test
+package com.android.poc
 
 import android.app.Application
 import com.android.apphelper2.app.AppHelperManager

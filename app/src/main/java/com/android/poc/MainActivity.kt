@@ -1,4 +1,4 @@
-package com.android.poc.test
+package com.android.poc
 
 import android.Manifest
 import android.os.Build
@@ -10,10 +10,10 @@ import com.android.apphelper2.utils.ToastUtil
 import com.android.apphelper2.utils.permission.PermissionMultipleCallBackListener
 import com.android.apphelper2.utils.permission.PermissionUtil
 import com.android.keeplife.account.LifecycleManager
-import com.android.poc.test.databinding.ActivityMainBinding
+import com.android.poc.databinding.ActivityMainBinding
 
 /**
- *  * 权限指令： adb shell pm grant com.android.poc.test android.permission.WRITE_SECURE_SETTINGS
+ *  * 权限指令： adb shell pm grant com.android.poc android.permission.WRITE_SECURE_SETTINGS
  *
  */
 @RequiresApi(Build.VERSION_CODES.N)

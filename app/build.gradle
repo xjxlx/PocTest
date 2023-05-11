@@ -9,7 +9,7 @@ android {
     buildToolsVersion config.buildToolsVersion
 
     defaultConfig {
-        applicationId "com.android.poc.test"
+        applicationId "com.android.poc"
         minSdkVersion config.minSdkVersion
         targetSdkVersion config.targetSdkVersion
         versionCode config.versionCode
