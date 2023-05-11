@@ -9,10 +9,11 @@ import com.android.accessibility.util.AccessibilityUtil
 import com.android.apphelper2.utils.ToastUtil
 import com.android.apphelper2.utils.permission.PermissionMultipleCallBackListener
 import com.android.apphelper2.utils.permission.PermissionUtil
+import com.android.keeplife.account.LifecycleManager
 import com.android.poc.test.databinding.ActivityMainBinding
 
 /**
- *  * 权限指令： adb shell pm grant com.android.poc.test2  android.permission.WRITE_SECURE_SETTINGS
+ *  * 权限指令： adb shell pm grant com.android.poc.test android.permission.WRITE_SECURE_SETTINGS
  *
  */
 @RequiresApi(Build.VERSION_CODES.N)
@@ -45,6 +46,21 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun intiData() {
+        mBinding.btnStartBh.setOnClickListener {
+            permissionUtil.requestArray(
+                arrayOf(Manifest.permission.GET_ACCOUNTS, Manifest.permission.WRITE_SYNC_SETTINGS, Manifest.permission.FOREGROUND_SERVICE),
+                object : PermissionMultipleCallBackListener {
+                    override fun onCallBack(allGranted: Boolean, map: MutableMap<String, Boolean>) {
+                        LifecycleManager.instance.startLifecycle(this@MainActivity)
+                        ToastUtil.show("开启保活服务")
+                    }
+                })
+        }
+        mBinding.btnStopBh.setOnClickListener {
+            LifecycleManager.instance.stopLifecycle(this@MainActivity) {
+                ToastUtil.show(it)
+            }
+        }
 
         mBinding.btnStartAccessibility.setOnClickListener {
             mAccessibilityUtil.startAccessibility(list) {
@@ -59,22 +75,6 @@ class MainActivity : AppCompatActivity() {
         mBinding.btnOpenAccessibility.setOnClickListener {
             mAccessibilityUtil.openAccessibilitySetting()
             ToastUtil.show("打开自动化设置")
-        }
-
-        mBinding.btnStartBh.setOnClickListener {
-            permissionUtil.requestArray(
-                arrayOf(Manifest.permission.GET_ACCOUNTS, Manifest.permission.WRITE_SYNC_SETTINGS, Manifest.permission.FOREGROUND_SERVICE),
-                object : PermissionMultipleCallBackListener {
-                    override fun onCallBack(allGranted: Boolean, map: MutableMap<String, Boolean>) {
-//                        LifecycleManager.instance.startLifecycle(this@MainActivity)
-//                        ToastUtil.show("开启保活服务")
-                    }
-                })
-        }
-        mBinding.btnStopBh.setOnClickListener {
-//            LifecycleManager.instance.stopLifecycle(this@MainActivity) {
-//                ToastUtil.show(it)
-//            }
         }
     }
 }
