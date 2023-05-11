@@ -63,8 +63,15 @@ class MainActivity : AppCompatActivity() {
         }
 
         mBinding.btnStartAccessibility.setOnClickListener {
+            val list = arrayListOf<String>()
+            list.add("rl_root_view") // 首页 rl_root_view
+            list.add("start_btn")// 滑动主题 start_btn
+            list.add("iv_selector_number_start")// 数字选择页面 iv_selector_number_start
+            list.add("iv_guidance_start")// 引导页的页面 iv_guidance_start
+            list.add("finish_click")// 结束页面 finish_click
+
             mAccessibilityUtil.startAccessibility(list) {
-                ToastUtil.show(it)
+                ToastUtil.show(this, it)
             }
         }
         mBinding.btnStopAccessibility.setOnClickListener {

@@ -2,19 +2,19 @@ plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
 }
-def config = rootProject.ext.android
+
+def configCompile = rootProject.ext.android
 
 android {
-    compileSdkVersion config.compileSdkVersion
-    buildToolsVersion config.buildToolsVersion
+    namespace 'com.android.poc'
+    compileSdk configCompile.compileSdkVersion
 
     defaultConfig {
         applicationId "com.android.poc"
-        minSdkVersion config.minSdkVersion
-        targetSdkVersion config.targetSdkVersion
-        versionCode config.versionCode
-        versionName config.versionName
-
+        minSdk configCompile.minSdkVersion
+        targetSdk configCompile.targetSdkVersion
+        versionCode configCompile.versionCode
+        versionName configCompile.versionName
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
         /*无障碍服务列表的名字，可以不用修改，默认是:App无障碍服务*/
