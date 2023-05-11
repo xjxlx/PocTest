@@ -28,3 +28,6 @@ dependencyResolutionManagement {
 }
 rootProject.name = "PosTest2"
 include ':app'
+include ':apphelper2'
+include ':accessibility'
+include ':keeplife'
