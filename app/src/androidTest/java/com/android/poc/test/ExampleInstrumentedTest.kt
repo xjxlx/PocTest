@@ -1,4 +1,4 @@
-package com.android.poc.test2
+package com.android.poc.test
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4

@@ -26,7 +26,7 @@ dependencyResolutionManagement {
         mavenCentral()
     }
 }
-rootProject.name = "PosTest2"
+rootProject.name = "PosTest"
 include ':app'
 include ':apphelper2'
 include ':accessibility'
