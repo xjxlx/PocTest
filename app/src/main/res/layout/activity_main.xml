@@ -11,23 +11,59 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <Button
-            android:id="@+id/btn_start_bh"
-            android:layout_width="@dimen/dp_100"
-            android:layout_height="@dimen/dp_50"
-            android:layout_gravity="center"
-            android:layout_marginTop="@dimen/dp_40"
-            android:text="开启保活"
-            android:textSize="@dimen/sp_16" />
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="@dimen/dp_50">
 
-        <Button
-            android:id="@+id/btn_stop_bh"
-            android:layout_width="@dimen/dp_100"
-            android:layout_height="@dimen/dp_50"
-            android:layout_gravity="center"
-            android:layout_marginTop="@dimen/dp_40"
-            android:text="关闭保活"
-            android:textSize="@dimen/sp_16" />
+            <Button
+                android:id="@+id/btn_start_bh"
+                android:layout_width="@dimen/dp_100"
+                android:layout_height="@dimen/dp_50"
+                android:layout_alignParentStart="true"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/dp_40"
+                android:text="开启保活"
+                android:textSize="@dimen/sp_16" />
+
+            <Button
+                android:id="@+id/btn_stop_bh"
+                android:layout_width="@dimen/dp_100"
+                android:layout_height="@dimen/dp_50"
+                android:layout_alignParentEnd="true"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/dp_40"
+                android:text="关闭保活"
+                android:textSize="@dimen/sp_16" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="@dimen/dp_20">
+
+            <Button
+                android:id="@+id/btn_start_accessibility"
+                android:layout_width="@dimen/dp_160"
+                android:layout_height="@dimen/dp_50"
+                android:layout_alignParentStart="true"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/dp_40"
+                android:text="开启自动化测试"
+                android:textSize="@dimen/sp_16" />
+
+            <Button
+                android:id="@+id/btn_stop_accessibility"
+                android:layout_width="@dimen/dp_160"
+                android:layout_height="@dimen/dp_50"
+                android:layout_alignParentEnd="true"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/dp_40"
+                android:text="关闭自动化测试"
+                android:textSize="@dimen/sp_16" />
+
+        </RelativeLayout>
 
         <Button
             android:id="@+id/btn_open_accessibility"
@@ -39,21 +75,21 @@
             android:textSize="@dimen/sp_16" />
 
         <Button
-            android:id="@+id/btn_start_accessibility"
+            android:id="@+id/btn_open_qd"
             android:layout_width="@dimen/dp_170"
             android:layout_height="@dimen/dp_50"
             android:layout_gravity="center"
             android:layout_marginTop="@dimen/dp_40"
-            android:text="开启自动化测试"
+            android:text="打开开机启动设置"
             android:textSize="@dimen/sp_16" />
 
         <Button
-            android:id="@+id/btn_stop_accessibility"
+            android:id="@+id/btn_open_dc"
             android:layout_width="@dimen/dp_170"
             android:layout_height="@dimen/dp_50"
             android:layout_gravity="center"
             android:layout_marginTop="@dimen/dp_40"
-            android:text="关闭自动化测试"
+            android:text="电池优化权限"
             android:textSize="@dimen/sp_16" />
 
     </LinearLayout>

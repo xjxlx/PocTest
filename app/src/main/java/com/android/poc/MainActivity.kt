@@ -6,7 +6,9 @@ import android.os.Bundle
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import com.android.accessibility.util.AccessibilityUtil
+import com.android.apphelper2.utils.SystemUtil
 import com.android.apphelper2.utils.ToastUtil
+import com.android.apphelper2.utils.permission.PermissionCallBackListener
 import com.android.apphelper2.utils.permission.PermissionMultipleCallBackListener
 import com.android.apphelper2.utils.permission.PermissionUtil
 import com.android.keeplife.account.LifecycleManager
@@ -73,6 +75,25 @@ class MainActivity : AppCompatActivity() {
         mBinding.btnOpenAccessibility.setOnClickListener {
             mAccessibilityUtil.openAccessibilitySetting()
             ToastUtil.show("打开自动化设置")
+        }
+
+
+        mBinding.btnOpenQd.setOnClickListener {
+            SystemUtil.openApplicationSetting(this)
+        }
+
+        mBinding.btnOpenDc.setOnClickListener {
+            permissionUtil.setCallBackListener(object : PermissionCallBackListener {
+                override fun onCallBack(permission: String, isGranted: Boolean) {
+                    val batteryOptimizations = SystemUtil.isIgnoringBatteryOptimizations(this@MainActivity)
+                    if (!batteryOptimizations) {
+                        SystemUtil.requestIgnoreBatteryOptimizations(this@MainActivity)
+                    } else {
+                        ToastUtil.show("已经优化完毕！")
+                    }
+                }
+            })
+                .request(Manifest.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS)
         }
     }
 }
