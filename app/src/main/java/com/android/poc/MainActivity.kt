@@ -33,8 +33,8 @@ class MainActivity : AppCompatActivity() {
         return@lazy listOf
     }
     private val permissionUtil = PermissionUtil.PermissionActivity(this)
-    private val mAccessibilityUtil: AccessibilityUtil by lazy {
-        return@lazy AccessibilityUtil(this)
+    private val mAccessibilityUtil: AccessibilityUtil? by lazy {
+        return@lazy AccessibilityUtil.getInstance(this)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -63,17 +63,17 @@ class MainActivity : AppCompatActivity() {
         }
 
         mBinding.btnStartAccessibility.setOnClickListener {
-            mAccessibilityUtil.startAccessibility(list) {
+            mAccessibilityUtil?.startAccessibility(list) {
                 ToastUtil.show(this, it)
             }
         }
         mBinding.btnStopAccessibility.setOnClickListener {
-            mAccessibilityUtil.forceStopAccessibility(this@MainActivity) {
+            mAccessibilityUtil?.forceStopAccessibility(this@MainActivity) {
                 ToastUtil.show(it)
             }
         }
         mBinding.btnOpenAccessibility.setOnClickListener {
-            mAccessibilityUtil.openAccessibilitySetting()
+            mAccessibilityUtil?.openAccessibilitySetting()
             ToastUtil.show("打开自动化设置")
         }
 
