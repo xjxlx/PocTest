@@ -73,4 +73,6 @@ dependencies {
 
     //协程依赖 - 基础
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4"
+    implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.3.1'
+
 }

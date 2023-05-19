@@ -5,7 +5,9 @@ import android.os.Build
 import android.os.Bundle
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.lifecycleScope
 import com.android.accessibility.util.AccessibilityUtil
+import com.android.apphelper2.utils.AppUtil
 import com.android.apphelper2.utils.SystemUtil
 import com.android.apphelper2.utils.ToastUtil
 import com.android.apphelper2.utils.permission.PermissionCallBackListener
@@ -13,6 +15,9 @@ import com.android.apphelper2.utils.permission.PermissionMultipleCallBackListene
 import com.android.apphelper2.utils.permission.PermissionUtil
 import com.android.keeplife.account.LifecycleManager
 import com.android.poc.databinding.ActivityMainBinding
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 /**
  *  * 权限指令： adb shell pm grant com.android.poc android.permission.WRITE_SECURE_SETTINGS
@@ -79,7 +84,14 @@ class MainActivity : AppCompatActivity() {
 
 
         mBinding.btnOpenQd.setOnClickListener {
-            SystemUtil.openApplicationSetting(this)
+//            SystemUtil.openApplicationSetting(this)
+
+            lifecycleScope.launch(Dispatchers.IO) {
+                while (true) {
+                    AppUtil.sendAppRunningBroadcast(this@MainActivity, "com.xjx.kotlin")
+                    delay(5000)
+                }
+            }
         }
 
         mBinding.btnOpenDc.setOnClickListener {
