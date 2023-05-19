@@ -9,7 +9,7 @@ import androidx.annotation.RequiresApi
 import com.android.accessibility.util.AccessibilityUtil
 import com.android.apphelper2.utils.LogUtil
 
-@RequiresApi(Build.VERSION_CODES.N)
+@RequiresApi(Build.VERSION_CODES.P)
 class KeepLifeReceiver : BroadcastReceiver() {
     private var context: Context? = null
     private val mAccessibilityUtil: AccessibilityUtil? by lazy {
