@@ -3,11 +3,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.android.poc">
 
-    <!--    <queries>-->
-    <!--        <package android:name="com.xjx.kotlin"></package>-->
-    <!--    </queries>-->
-
-    <!--    android:name="android.permission.QUERY_ALL_PACKAGES"-->
+    <!-- <queries> -->
+    <!-- <package android:name="com.xjx.kotlin"></package> -->
+    <!-- </queries> -->
+    <!-- android:name="android.permission.QUERY_ALL_PACKAGES" -->
     <uses-permission
         android:name="android.permission.QUERY_ALL_PACKAGES"
         tools:ignore="QueryAllPackagesPermission" />
@@ -19,6 +18,15 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/Theme.PocTest2">
+        <receiver
+            android:name=".keeplife.KeepLifeReceiver"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="${applicationId}" />
+            </intent-filter>
+        </receiver>
+
         <receiver
             android:name="com.android.keeplife.KeepLifeReceiver"
             android:enabled="true"
@@ -33,6 +41,7 @@
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
