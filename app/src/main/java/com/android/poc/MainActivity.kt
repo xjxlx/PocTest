@@ -77,11 +77,9 @@ class MainActivity : AppCompatActivity() {
             ToastUtil.show("打开自动化设置")
         }
 
-
         mBinding.btnOpenQd.setOnClickListener {
             SystemUtil.openApplicationSetting(this)
         }
-
         mBinding.btnOpenDc.setOnClickListener {
             permissionUtil.setCallBackListener(object : PermissionCallBackListener {
                 override fun onCallBack(permission: String, isGranted: Boolean) {
