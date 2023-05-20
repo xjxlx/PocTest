@@ -3,7 +3,7 @@ package com.android.poc.keeplife
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
-import com.android.keeplife.BroadCastConstant
+import com.android.keeplife.KeepBroadCastReceiver
 
 class KeepLifeReceiver : BroadcastReceiver() {
 
@@ -15,15 +15,15 @@ class KeepLifeReceiver : BroadcastReceiver() {
     }
 
     override fun onReceive(context: Context, intent: Intent) {
-        BroadCastConstant.init(context)
+        KeepBroadCastReceiver.init(context)
 
         when (val type = intent.getStringExtra("type")) {
             Type_Error -> { // 收到关闭的广播
-                BroadCastConstant.close(context)
+                KeepBroadCastReceiver.close(context)
             }
 
             Type_Listener -> {
-                BroadCastConstant.listener(type)
+                KeepBroadCastReceiver.listener(type)
             }
         }
     }
