@@ -9,10 +9,11 @@ import androidx.annotation.RequiresApi
 import com.android.accessibility.util.AccessibilityUtil
 import com.android.apphelper2.utils.KeepLifeBroadCast
 import com.android.apphelper2.utils.LogUtil
-import com.android.apphelper2.utils.SystemUtil
 
 @RequiresApi(Build.VERSION_CODES.P)
 class KeepLifeReceiver : BroadcastReceiver() {
+
+    private val tag = "Keep-Life-Receiver : "
     private var context: Context? = null
     private val mAccessibilityUtil: AccessibilityUtil? by lazy {
         return@lazy AccessibilityUtil.getInstance(context!!)
@@ -32,19 +33,13 @@ class KeepLifeReceiver : BroadcastReceiver() {
         this.context = context
         val action = intent.action
         if (TextUtils.equals(action, "com.android.lifecycle")) {
-            // 1：检查自己的应用是否还活着，如果没有活着，就把自己的应用拉活
-            if (!KeepLifeStatus.isRunning) {
-                SystemUtil.openApplication(context, context.packageName)
-                KeepLifeStatus.isRunning = true
-            }
 
-            // 2: 检测 accessiblity 服务
-            LogUtil.e("收到了轮询的检测 : ------>")
+            // 1: 检测 accessibility 服务
             mAccessibilityUtil?.startAccessibility(list) {
-                LogUtil.e("keep receiver : ", it)
+                LogUtil.e(tag, "keep receiver - accessibility : $it")
             }
 
-            //3：发送保活的权限
+            //2：发送保活的权限
             KeepLifeBroadCast.sendAppKeepLifeReceiver(context, context.packageName)
         }
     }
