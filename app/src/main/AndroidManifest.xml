@@ -32,7 +32,7 @@
             android:enabled="true"
             android:exported="true">
             <intent-filter>
-                <action android:name="com.android.helper.lifecycle" />
+                <action android:name="com.android.lifecycle" />
             </intent-filter>
         </receiver>
 
