@@ -6,6 +6,7 @@ import android.os.Bundle
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import com.android.accessibility.util.AccessibilityUtil
+import com.android.apphelper2.utils.LogUtil
 import com.android.apphelper2.utils.SystemUtil
 import com.android.apphelper2.utils.ToastUtil
 import com.android.apphelper2.utils.permission.PermissionCallBackListener
@@ -46,6 +47,15 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun intiData() {
+        // 文件读写权限
+        permissionUtil.setCallBackListener(object : PermissionCallBackListener {
+            override fun onCallBack(permission: String, isGranted: Boolean) {
+                LogUtil.e("是否用后文件读写权限：$isGranted")
+            }
+        })
+            .request(Manifest.permission.WRITE_EXTERNAL_STORAGE)
+
+        // 开启保活
         mBinding.btnStartBh.setOnClickListener {
             permissionUtil.requestArray(
                 arrayOf(Manifest.permission.GET_ACCOUNTS, Manifest.permission.WRITE_SYNC_SETTINGS, Manifest.permission.FOREGROUND_SERVICE),
@@ -56,30 +66,37 @@ class MainActivity : AppCompatActivity() {
                     }
                 })
         }
+
+        // 关闭保活
         mBinding.btnStopBh.setOnClickListener {
             LifecycleManager.instance.stopLifecycle(this@MainActivity) {
                 ToastUtil.show(it)
             }
         }
 
+        // 开启自动化服务
         mBinding.btnStartAccessibility.setOnClickListener {
             mAccessibilityUtil?.startAccessibility(list) {
                 ToastUtil.show(this, it)
             }
         }
+        // 关闭自动化服务
         mBinding.btnStopAccessibility.setOnClickListener {
             mAccessibilityUtil?.forceStopAccessibility(this@MainActivity) {
                 ToastUtil.show(it)
             }
         }
+        // 打开自动化设置
         mBinding.btnOpenAccessibility.setOnClickListener {
             mAccessibilityUtil?.openAccessibilitySetting()
             ToastUtil.show("打开自动化设置")
         }
 
+        // 打开开机启动权限
         mBinding.btnOpenQd.setOnClickListener {
             SystemUtil.openApplicationSetting(this)
         }
+        // 打开电池优化权限
         mBinding.btnOpenDc.setOnClickListener {
             permissionUtil.setCallBackListener(object : PermissionCallBackListener {
                 override fun onCallBack(permission: String, isGranted: Boolean) {
@@ -94,8 +111,9 @@ class MainActivity : AppCompatActivity() {
                 .request(Manifest.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS)
         }
 
+        // 打开app
         mBinding.btnOpenApp.setOnClickListener {
-            SystemUtil.openApplication(this@MainActivity, "com.mobilityasia.hcp3.deepbreath.audi.deepbreathpoc")
-        }
+             SystemUtil.openApplication(this@MainActivity, "com.mobilityasia.hcp3.deepbreath.audi.deepbreathpoc")
+         }
     }
 }
