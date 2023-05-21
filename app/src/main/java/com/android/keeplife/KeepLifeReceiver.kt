@@ -7,6 +7,7 @@ import android.os.Build
 import android.text.TextUtils
 import androidx.annotation.RequiresApi
 import com.android.accessibility.util.AccessibilityUtil
+import com.android.apphelper2.utils.KeepLifeBroadCast
 import com.android.apphelper2.utils.LogUtil
 
 @RequiresApi(Build.VERSION_CODES.P)
@@ -35,6 +36,9 @@ class KeepLifeReceiver : BroadcastReceiver() {
             mAccessibilityUtil?.startAccessibility(list) {
                 LogUtil.e("keep receiver : ", it)
             }
+
+            // send keep life broadcast
+            KeepLifeBroadCast.sendAppKeepLifeReceiver(context, context.packageName)
         }
     }
 }

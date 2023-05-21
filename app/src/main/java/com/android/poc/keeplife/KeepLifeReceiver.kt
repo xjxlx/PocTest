@@ -12,6 +12,7 @@ class KeepLifeReceiver : BroadcastReceiver() {
         private const val Type_Close = "close"
         private const val Type_Open = "open"
         private const val Type_Error = "error"
+        private const val TYPE_LIFE = "life"
     }
 
     override fun onReceive(context: Context, intent: Intent) {
@@ -24,6 +25,10 @@ class KeepLifeReceiver : BroadcastReceiver() {
 
             Type_Listener -> {
                 KeepBroadCastReceiver.listener(type)
+            }
+
+            TYPE_LIFE -> {
+                KeepBroadCastReceiver.life(type)
             }
         }
     }
