@@ -66,6 +66,7 @@
         </RelativeLayout>
 
         <RelativeLayout
+            android:paddingHorizontal="@dimen/dp_20"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -73,19 +74,10 @@
             android:orientation="horizontal">
 
             <Button
-                android:id="@+id/btn_open_accessibility"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_gravity="center"
-                android:text="自动化设置"
-                android:textSize="@dimen/sp_12" />
-
-            <Button
                 android:id="@+id/btn_open_qd"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
+                android:layout_alignParentStart="true"
                 android:layout_gravity="center"
                 android:text="开机启动设置"
                 android:textSize="@dimen/sp_12" />
@@ -97,6 +89,33 @@
                 android:layout_alignParentRight="true"
                 android:layout_gravity="center"
                 android:text="电池优化"
+                android:textSize="@dimen/sp_12" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/dp_20"
+            android:orientation="horizontal"
+            android:paddingHorizontal="@dimen/dp_20">
+
+            <Button
+                android:id="@+id/btn_open_accessibility"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_gravity="center"
+                android:text="自动化设置"
+                android:textSize="@dimen/sp_12" />
+
+            <Button
+                android:id="@+id/btn_open_app"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_gravity="center"
+                android:text="打开应用"
                 android:textSize="@dimen/sp_12" />
         </RelativeLayout>
 

@@ -93,5 +93,9 @@ class MainActivity : AppCompatActivity() {
             })
                 .request(Manifest.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS)
         }
+
+        mBinding.btnOpenApp.setOnClickListener {
+            SystemUtil.openApplication(this@MainActivity, "com.mobilityasia.hcp3.deepbreath.audi.deepbreathpoc")
+        }
     }
 }
