@@ -6,6 +6,7 @@ import android.os.Bundle
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import com.android.accessibility.util.AccessibilityUtil
+import com.android.apphelper2.utils.FileUtil
 import com.android.apphelper2.utils.LogUtil
 import com.android.apphelper2.utils.SystemUtil
 import com.android.apphelper2.utils.ToastUtil
@@ -61,6 +62,8 @@ class MainActivity : AppCompatActivity() {
                 arrayOf(Manifest.permission.GET_ACCOUNTS, Manifest.permission.WRITE_SYNC_SETTINGS, Manifest.permission.FOREGROUND_SERVICE),
                 object : PermissionMultipleCallBackListener {
                     override fun onCallBack(allGranted: Boolean, map: MutableMap<String, Boolean>) {
+                        LifecycleManager.instance.paddingActivity(this@MainActivity.packageName,
+                            FileUtil.instance.getCanonicalNamePath(this@MainActivity::class.java))
                         LifecycleManager.instance.startLifecycle(this@MainActivity)
                         ToastUtil.show("开启保活服务")
                     }
@@ -76,6 +79,8 @@ class MainActivity : AppCompatActivity() {
 
         // 开启自动化服务
         mBinding.btnStartAccessibility.setOnClickListener {
+            mAccessibilityUtil?.paddingActivity(this@MainActivity.packageName,
+                FileUtil.instance.getCanonicalNamePath(this@MainActivity::class.java))
             mAccessibilityUtil?.startAccessibility(list) {
                 ToastUtil.show(this, it)
             }
